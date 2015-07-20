@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>双飞翼布局练习</title>
+	<style type="text/css">
+		body{
+			margin:0;
+		}
+		.body{
+			height: 200px;
+		}
+		.left{
+			float: left;
+			width: 100px;
+			height: 100%;
+			background: red;
+			margin-left: -100%;
+		}
+		.middle{
+			background: yellow;
+			margin:0 100px;
+			height: 100%;
+		}
+		.right{
+			float:left;
+			width: 100px;
+			height: 100%;
+			background: green;
+			margin-left: -100px;
+		}
+		.midcontent{
+			float: left;
+			height: 100%;
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="body">
+		<div class="midcontent">
+			<div class="middle"></div>
+		</div>
+		<div class="left"></div>
+		<div class="right"></div>
+	</div>
+</body>
+</html>

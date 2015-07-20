@@ -1,0 +1,224 @@
+/*
+* @author Tinker
+* @issue: Baidu IFE
+* @for: blog.html;
+*/
+
+.g-blog{
+	width: 980px;
+	margin: 0 auto;
+	padding: 20px 0 100px 0;
+	line-height: 1.5;
+}
+.g-blog-left{
+	background: #ccc;
+	width: 700px;
+	margin-right: 10px;
+	float: left;
+}
+.g-blog-right{
+	background: #ccc;
+	width:270px;
+	float: right;
+}
+.m-textblock{
+	margin-bottom: 10px;
+	padding: 20px;
+	position: relative;
+	background: white;
+}
+.u-maintitle{
+	display: block;
+	color: #da70d6;
+	font-size:20px;
+}
+.u-subtitle{
+	display: block;
+	color: #666;
+	font-size: 12px;
+}
+.u-maintext{
+	text-indent: 2em;
+	margin:10px 0;
+}
+.u-posttime{
+	text-align: right;
+	color: #ccc;
+	font-size: 12px;
+}
+.u-leftbar{
+	width: 60px;
+	height: 80px;
+	position: absolute;
+	top: 20px;
+	left: -60px; 
+}
+.u-leftbar p{
+	height: 40px;
+	width: 60px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 16px;
+	color: white;
+}
+.u-deeppurple{
+	background: #522a5c;
+}
+.u-purple{
+	background: #da70d6;
+}
+
+.m-pagelist{
+	text-align: center;
+}
+.m-pagelist ul{
+	margin: 0 auto;
+	height: 35px;
+	width: 490px;
+}
+.m-pagelist ul li{
+	font-size: 10px;
+	list-style: none;
+	height: 15px;
+	line-height: 15px;
+	min-width: 10px;
+	padding: 5px 10px;
+	margin: 5px;
+	background: white;
+	color: black;
+	float: left;
+	cursor: pointer;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition:all 0.3s;
+}
+.m-pagelist ul li:hover{
+	color: white;
+	background: #da70d6;
+}
+.m-search{
+	width: 230px;
+	height: 40px;
+	padding: 20px;
+	background: white;
+}
+.m-searchbox{
+	border:1px solid #ccc;
+	height: 40px;
+	width: 100%;
+	text-align: center;
+}
+.m-searchbox input{
+	border: 0;
+	padding: 0 10px;
+	margin: 0;
+	outline: none;
+	width: 130px;
+	height: 40px;
+	float: left;
+	font-size: 16px;
+}
+.m-searchbox span{
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	display: inline-block;
+	float: left;
+	font-size: 20px;
+	background: #ccc;
+	color: white;
+	cursor: pointer;
+}
+.m-sidebar{
+	width: 270px;
+	padding: 20px 0;
+	background: #ccc;
+}
+.m-sidebar ul li{
+	margin: 1px 0;
+	list-style: none;
+	height: 50px;
+	line-height: 50px;
+	width: 246px;
+	padding-left: 20px;
+	border-left:4px solid #da70d6;
+	background: white;
+	cursor: pointer;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition:all 0.3s;
+}
+.m-sidebar ul li:hover{
+	border-left: 4px solid black;
+}
+
+.m-calendar{
+	width: 230px;
+	background: white;
+	padding: 20px;
+	text-align: center;
+}
+.m-calendar span{
+	display: inline-block;
+	font-size: 20px;
+	font-weight: bold;
+	color: #522a5c;
+}
+.m-calendar table{
+	width: 230px;
+	height: 200px;
+	border-collapse: collapse;
+	font-size: 14px;
+}
+.m-calendar td{
+	border-bottom: 1px solid #ccc;
+	cursor: pointer;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition:all 0.3s;
+}
+.m-calendar td:hover{
+	color: white;
+	background: #522a5c;
+}
+.u-prev{
+	float:left;
+	cursor: pointer;
+}
+.u-next{
+	float:right;
+	cursor: pointer;
+}
+.u-cyear{
+	cursor: default;
+}
+.m-tags{
+	margin-top: 20px;
+	width: 230px;
+	padding: 20px;
+	background: white;
+}
+.m-tags span{
+	color: #522a5c;
+}
+.size12{
+	font-size: 12px;
+}
+.size14{
+	font-size: 14px;
+}
+.size16{
+	font-size: 16px;
+}
+.size18{
+	font-size: 18px;
+}
+.size20{
+	font-size: 20px;
+}
+.size24{
+	font-size: 24px;
+}
+.bold{
+	font-weight: bold;
+}

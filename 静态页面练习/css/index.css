@@ -1,0 +1,218 @@
+/*
+* @author Tinker
+* @issue: Baidu IFE
+* @for: all;
+*/
+
+*{
+	padding: 0;
+	margin: 0;
+}
+.g-head,.g-body,.g-foot{
+	width: 100%;
+	min-width: 980px;
+}
+.g-head{
+	background: #522a5c;
+	color:white;
+	position: relative;
+}
+.m-banner-top{
+	width: 980px;
+	height: 80px;
+	margin: 0 auto;
+	position: relative;
+}
+.m-mylogo{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+@media(min-width: 980px){ 
+	.m-github{
+		position: absolute;
+		right: 10px;
+		top: 46px;
+	}
+}
+@media(max-width: 980px){
+	.m-github{
+		display: none;
+	}
+}
+.m-menu{
+	position: absolute;
+	right: 0;
+	bottom: 10px;
+}
+.m-menu ul li{
+	list-style: none;
+	float: left;
+	font-size: 14px;
+	margin-left: 28px;
+}
+.m-banner-top a{
+	text-decoration: none;
+	color: white;
+}
+.m-banner-bottom{
+	background-image: url("../img/banner-bg.jpg");
+	background-size: 100% 100%;
+	height: 600px;
+}
+.m-banner-content{
+	width: 980px;
+	margin: 0 auto;
+	height: 100%;
+	position: relative;
+}
+.m-info{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 360px;
+	padding: 10px 10px 30px 10px;
+	background: -webkit-linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 75%, rgba(255,255,255,0) 100%);
+	color: white;
+}
+.m-info span{
+	display: inline-block;
+	font-size: 14px;
+	width: 100%;
+	text-align: right;
+	margin-bottom: 12px;
+}
+.m-info p{
+	text-indent: 2em;
+	font-size: 12px;
+	line-height: 150%;
+}
+.g-body{
+	background: #ccc;
+}
+.m-main img{
+	width: 300px;
+	height: 180px;
+}
+.m-main p,.m-main2 p{
+	font:12px/1.7 white;
+	padding: 15px 20px;
+	text-indent: 2em;
+}
+.m-container1,.m-container2,.m-container3{
+	width: 300px;
+	background: white;
+	color: black;
+	padding: 10px;
+}
+
+.clear:after{display:block;visibility:hidden;clear:both;height:0;overflow:hidden;content:'.';}
+
+.m-main{
+	margin: auto;
+	padding: 10px 0 100px 0;
+	width: 980px;
+}
+.m-container1{
+	margin: 0px 10px 0 0;
+	float: left;
+}
+.m-container2{
+	float: left;
+}
+.m-container3{
+	margin: 0px 0 0 10px;
+	float: left;
+}
+
+.m-main2{
+	width: 100%;
+	background: white;
+}
+.m-introduce{
+	width: 980px;
+	margin:0 auto;
+	position: relative;
+}
+.m-introduce img{
+	height: 160px;
+	width: 160px;
+	border-radius: 50%;
+	position: absolute;
+	top: -50px;
+	left: 50%;
+	margin-left: -80px;
+}
+.m-introtext{
+	padding:160px 0;
+	text-align: center;
+	width: 600px;
+	margin:0 auto;
+}
+.m-introduce span{
+	font: 20px Century Gothic;
+}
+.m-introduce p{
+	font-size: 14px;
+	text-align: left;
+}
+
+.g-foot{
+	background: black;
+}
+
+.m-footmenu{
+	padding: 10px;
+	border-bottom: 1px solid #ccc;
+}
+.m-footmenu ul{
+	margin:0px auto;
+	width: 224px;
+}
+
+.m-footmenu a{
+	text-decoration: none;
+	color: white;
+}
+
+.m-footmenu ul li{
+	list-style: none;
+	float: left;
+	font-size: 14px;
+	margin-left: 28px;
+}
+.m-copyright{
+	margin: 0 auto;
+	text-align: center;
+	color: white;
+}
+
+.m-copyright p{
+	padding: 30px;
+}
+
+.m-footlist{
+	width: 940px;
+	margin: 0 auto;
+	color: white;
+	padding: 20px;
+}
+
+.m-footlist ul li{
+	list-style: none;
+	line-height: 1.5;
+}
+.m-linkblock{
+	float:left;
+	width: 20%;
+}
+.m-linkblock span{
+	color: #ccc;
+}
+.m-footlist a{
+	color: white;
+}
+.m-footlist span{
+	display: inline-block;
+	margin: 30px 0;
+}

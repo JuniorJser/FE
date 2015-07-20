@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>闭合浮动</title>
+	<style type="text/css">
+		.container{
+			padding: 10px;
+			background: red;
+		}
+		.blueblock{
+			width: 100px;
+			height: 50px;
+			float: left;
+			background: blue;
+			margin: 5px;
+		}
+		.clearfix:after{
+			content: ".";
+			height: 0;
+			display: block;
+			visibility: hidden;
+			clear: both;
+			overflow: hidden;
+		}
+		.clearfix{*zoom:1;}
+	</style>
+</head>
+<body>
+	<div class="container clearfix">
+		<div class="blueblock"></div>
+		<div class="blueblock"></div>
+		<div class="blueblock"></div>
+		<div class="blueblock"></div>
+		<div class="blueblock"></div>
+		<div class="blueblock"></div>
+		<div class="blueblock"></div>
+		<div class="blueblock"></div>
+		<div class="blueblock"></div>
+		<div class="blueblock"></div>
+	</div>
+</body>
+</html>

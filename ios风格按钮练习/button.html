@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>button</title>
+	<style type="text/css">
+		.button1{
+			height: 40px;
+			width: 80px;
+			border-radius: 25px;
+			cursor: pointer;
+			box-shadow: 0 0 1px rgba(0,0,0,0.5);
+			overflow: hidden;
+		}
+		.button2{
+			height: 40px;
+			width: 80px;
+			border-radius: 25px;
+			box-shadow: inset 0 0 1px rgba(0,0,0,0.5);
+		}
+		.bg{
+			white-space: nowrap;
+			position: relative;
+			left: -63px;
+			top: 0;
+			width: 160px;
+		}
+		.green{
+			height: 40px;
+			width: 80px;
+			background: green;
+			display: inline-block;
+		}
+		.circle1{
+			margin-left: -25px;
+			height: 40px;
+			width: 40px;
+			background: white;
+			border-radius: 25px;
+			box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+			display: inline-block;
+		}
+		.iosbtn{
+			display: inline-block;
+			cursor: pointer;
+			height: 40px;
+			width: 80px;
+		}
+		.iosbtn input{
+			display: none;
+		}
+		.iosbtn i{
+			display: inline-block;
+			background: green;
+			transition:all ease 0.2s;
+			-webkit-transition:all ease 0.2s;
+			border-radius: 25px;
+			box-shadow:inset 0 1px 2px rgba(0,0,0,0.5);
+		}
+		.iosbtn i:before{
+			display: block;
+  			content: '';
+			width: 40px;
+			height: 40px;
+			background: white;
+			border-radius: 25px;
+			box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+		}
+		.iosbtn :checked + i{
+			padding-left: 40px;
+		}
+	</style>
+</head>
+<body>
+	<h1>ios风格按钮练习</h1>
+	<p>原生javascript实现</p>
+	<div class="button1">
+		<div class="bg">
+		<div class="green"></div>
+		<div class="circle1"></div>
+		</div>
+	</div>
+	<p>纯CSS实现</p>
+	<div class="button2">
+		<label class="iosbtn">
+			<input type="checkbox">
+			<i></i>
+		</label>
+	</div>
+
+
+	<script type="text/javascript">
+		//根据类名查找
+		var getByClass = function(cname){
+			var arr = [];
+			var all = document.getElementsByTagName('*');
+			var i=0, len=all.length;
+			for(i=0;i<len;i++){
+				if(all[i].className == cname)
+					arr.push(all[i]);
+			}
+			return arr;
+		};
+
+		//获取元素的样式
+		var getStyle = function(obj){
+			if(window.getComputedStyle){
+				return window.getComputedStyle(obj, null);
+			}
+			else{
+				return obj.currentStyle;
+			}
+		};
+
+		//获取元素
+		var btn = getByClass("button1")[0],
+			cir = getByClass("bg")[0];
+
+		//事件绑定
+		var bindEvent = function(obj,func,opt){
+			if(window.addEventListener){
+				obj.addEventListener("click",func,opt);
+			}
+			else{
+				obj.attachEvent("onclick",func);
+			}
+		};
+
+		//动画，暂不支持opacity
+		var animate = function(obj, attr, target, func){
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+				var cur = parseInt(getStyle(obj)[attr]);
+				var speed = (target-cur)/6;
+				speed = speed>0?Math.ceil(speed):Math.floor(speed);
+				if(cur == target){
+					if(func)
+						func(obj.parentNode);
+					clearInterval(obj.timer);
+				}
+				else{
+					obj.style[attr] = cur + speed + 'px';
+				}
+			}, 10); 
+		};
+
+		//按钮左右切换
+		var btntoggle = function(ele){
+			//var obj = ele.srcElement;
+			var obj = btn;
+			var cnode = obj.childNodes[1], pwidth, cwidth, cleft;
+			if(cnode){
+				pwdith = parseFloat(getStyle(obj).width);
+				cwidth = parseFloat(getStyle(cnode).width);
+				cleft = parseFloat(getStyle(cnode).left);
+				//circle在右边
+				if(cleft == -63){
+					animate(cnode, "left", -23);
+				}
+				//circle在左边
+				else{
+					animate(cnode, "left", -63);
+				}
+			}
+			else{
+				return;
+			}
+		};
+
+		bindEvent(btn, btntoggle, true);
+		bindEvent(cir, btntoggle, true);
+	</script>
+</body>
+</html>
