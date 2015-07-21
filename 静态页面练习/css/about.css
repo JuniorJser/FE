@@ -1,0 +1,130 @@
+/*
+* @author Tinker
+* @issue: Baidu IFE
+* @for: about.html;
+*/
+.g-about{
+	width: 980px;
+	margin: 0 auto;
+	padding: 150px 0 50px 0;
+	position: relative;
+}
+.m-about-left{
+	width: 487px;
+	margin-right: 6px;
+	float: left;
+	background: white;
+	height:1200px;
+	position: relative;
+}
+.m-about-right{
+	width: 487px;
+	float: right;
+	background: white;
+	height:1200px;
+	position: relative;
+}
+.bigcircle{
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	border:10px solid #ccc;
+}
+.smallcircle{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	border:6px solid #ccc;
+}
+.g-about img{
+	position: absolute;
+	left: 50%;
+}
+.img1{
+	top: 60px;
+	margin-left: -110px;
+}
+.img2{
+	top: 400px;
+	margin-left: -56px;
+}
+.img3{
+	top: 600px;
+	margin-left: -56px;
+}
+.img4{
+	top: 900px;
+	margin-left: -56px;
+}
+.m-about-left p{
+	font-size: 24px;
+	position: absolute;
+	right: 100px;
+}
+.m-about-left p:nth-child(1){
+	top:150px;
+}
+.m-about-left p:nth-child(2){
+	top:370px;
+}
+.m-about-left p:nth-child(3){
+	top:600px;
+}
+.m-about-left p:nth-child(4){
+	top:900px;
+}
+.m-about-right p{
+	font-size: 18px;
+	position: absolute;
+	left: 100px;
+}
+.m-about-right p:nth-child(1){
+	top:150px;
+}
+.m-about-right p:nth-child(2){
+	top:370px;
+}
+.m-about-right p:nth-child(3){
+	top:590px;
+}
+.m-about-right p:nth-child(4){
+	top:630px;
+}
+.m-about-right p:nth-child(5){
+	top:690px;
+}
+.m-about-right p:nth-child(6){
+	top:900px;
+}
+.m-about-right p:nth-child(7){
+	top:960px;
+}
+.timeblock{
+	display: block;
+	position: absolute;
+	height:20px;
+	width: 60px;
+	line-height: 20px;
+	font-size: 16px;
+	background: white;
+	text-align: center;
+	border: 6px solid #ccc;
+	border-radius: 10px;
+	left: 452px;
+	padding: 2px;
+}
+.time1{
+	top:730px;
+}
+.time2{
+	top:780px;
+}
+.time3{
+	top:840px;
+}
+.time4{
+	top:1050px;
+}
+.time5{
+	top:1110px;
+}
