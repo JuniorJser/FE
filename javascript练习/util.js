@@ -252,3 +252,38 @@ function addEnterEvent(element, listener){
 		}
 	});
 }
+
+//将事件绑定到$上
+$.on = function(selector, event, listener){
+	return addEvent($(selector), event, listener);
+};
+$.un = function(selector, event, listener){
+	return removeEvent($(selector), event, listener);
+};
+$.click = function(selector, listener){
+	return addClickEvent($(selector), listener);
+};
+$.enter = function(selector, listener){
+	return addEnterEvent($(selector), listener);
+};
+
+//事件代理
+function delegateEvent(element, tag, eventName, listener){
+	addEvent(element, eventName, function(e){
+		var event = e || window.event;
+		var target = event.target || event.srcElement;
+		if(target && target.tagName === tag.toLowerCase()){
+			listener.call(target, event);
+		}
+	});
+};
+
+$.delegate = function(selector, tag, eventName, listener){
+	return delegateEvent($(selector), tag, eventName, listener);
+};
+
+//ajax
+function ajax(url, options){
+	//options:{type:post/get, data:, onsuccess:, onfail:}
+	
+};
