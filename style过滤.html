@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>字符串过滤</title>
+</head>
+<body>
+<script>
+	var stylefilter = function(html){
+		return html.replace(/style\s*\=\s*(\'[\s\S]*?\'|\"[\s\S]*?\")+/g, '');
+	};
+	console.log(stylefilter("<p style='color:red' class='bcd'><p style  =    'color:blue' class='abc'><p style='' class='bcd'>"));
+</script>
+</body>
+</html>

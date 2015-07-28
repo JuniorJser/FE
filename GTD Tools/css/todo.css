@@ -70,12 +70,13 @@ html, body{
 	border-right: 1px solid #a9a9a9;
 	float: left;
 	background-color: #f5f5f5;
+	overflow: hidden;
 }
 .g-middle{
 	width: 250px;
 	border-right: 1px solid #a9a9a9;
 	float: left;
-	background-color: white;
+	background-color: #f5f5f5;
 }
 .g-right-c{
 	width: 100%;
@@ -99,15 +100,13 @@ html, body{
 	position: absolute;
 	right: 0;
 	display: none;
+	cursor: pointer;
 }
 .g-l-body .m-all,.g-l-body .m-title{
 	display: block;
 }
-.g-left .m-type{
-	margin-left: 60px;
-}
-.g-left .m-task{
-	margin-left: 80px;
+.typelist li{
+	padding-left: 40px;
 }
 .g-l-foot, .g-m-foot{
 	height: 40px;
@@ -138,6 +137,7 @@ html, body{
 	height: 30px;
 	line-height: 30px;
 	cursor: pointer;
+	border:1px solid #f5f5f5;
 }
 .g-m-body{
 	overflow: hidden;
@@ -147,9 +147,10 @@ html, body{
 	width: 100%;
 }
 .m-todotime{
-	background-color: #fffafa;
+	background-color: #CCCCFF;
 	padding:5px;
 	padding-left: 20px;
+	border-bottom: 1px dashed black;
 }
 .m-todoname{
 	padding:5px;
@@ -184,14 +185,29 @@ html, body{
 }
 .typeclicked{
 	background-color: white;
+	border-left: 3px solid black;
 }
 .taskclicked{
-	background-color: #f5f5f5;
+	background-color: white;
+	border-left: 3px solid black;
 }
-.tabchecked{
+.g-m-head .tabchecked{
 	background-color: white;
 	border:1px solid #a9a9a9;
 }
 .item{
 	width: 100%;
+	position: relative;
+}
+.hovered{
+	background-color: #f0bbff;
+	border-left: 3px solid black;
+	color: white;
+}
+
+.disnone{
+	display: none;
+}
+.item{
+	transition:all 0.2s;
 }
