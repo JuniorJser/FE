@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>流程图绘制</title>
+</head>
+<body>
+<div id="box" style="height:800px;width:800px;margin:0 auto;border:1px solid black;"></div>
+<script src="js/svg.js"></script>
+<script>
+	function SVGMethods(){
+		this.direction = function(direction){
+			var degree;
+			if(direction == 'left'){
+				degree = -180;
+			}else if(direction == 'right'){
+				degree = 0;
+			}else if(direction == 'top'){
+				degree = -90;
+			}else if(direction == 'bottom'){
+				degree = 90;
+			}else{
+				degree = 0;
+			}
+			return degree;
+		};
+		this.moveGroup = function(direction, px, py, arr){
+			var group = this.group();
+			for(var i = 0, len = arr.length; i<len; i++){
+				group.add(arr[i]);
+			};
+			group.move(px, py);
+			group.rotate(this.direction(direction));
+			return group;
+		};
+		this.moveSingle = function(direction, px, py, obj){
+			obj.move(px, py);
+			obj.rotate(this.direction(direction));
+		};
+		this.drawArrow = function(length, direction, px, py, width){
+			//length: number
+			//direction:left,right,top,bottom
+			//postion: (px, py)		
+			var line1 = this.polyline('0,20 '+ length+ ',20').fill('none').stroke({ width:width });
+			var line2 = this.polyline((length-20)+',40'+' '+length+',20'+' '+(length-20)+',0').fill('none').stroke({ width:width });
+			return this.moveGroup(direction, px, py, [line1, line2]);
+		};
+		this.drawLine = function(length, direction, px, py, width){
+			var line = this.line(0,0,length,0).stroke({width:width});
+			this.moveSingle(direction, px, py, line);
+			return line;
+		};
+		this.drawRectangle = function(){
+
+		};
+	};
+
+	function SVGFactory(selector, height, width){
+		var svg = SVG(selector).size(width, height);
+		SVGMethods.call(svg);
+		return svg;
+	}
+
+</script>
+<script>
+		var mysvg = SVGFactory('box', 800, 800);
+		mysvg.drawArrow(100, 'left', 100, 100, 3);
+		mysvg.drawLine(100, 'left', 200, 200, 3);
+</script>
+</body>
+</html>
