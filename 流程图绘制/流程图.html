@@ -50,8 +50,13 @@
 			this.moveSingle(direction, px, py, line);
 			return line;
 		};
-		this.drawRectangle = function(){
-
+		this.drawRectangle = function(width, height, px, py){
+			var rect = this.rect(width, height);
+			return rect;
+		};
+		this.drawText = function(content){
+			var text = this.text(content);
+			return text;
 		};
 	};
 
@@ -66,6 +71,11 @@
 		var mysvg = SVGFactory('box', 800, 800);
 		mysvg.drawArrow(100, 'left', 100, 100, 3);
 		mysvg.drawLine(100, 'left', 200, 200, 3);
+		var rect = mysvg.drawRectangle(100,200).attr({fill:'#ccc', 'stroke-width':2});
+		var text = mysvg.drawText("123").attr({'text-anchor':'middle'});;
+		var group = mysvg.group();
+		group.add(rect);
+		group.add(text);
 </script>
 </body>
 </html>

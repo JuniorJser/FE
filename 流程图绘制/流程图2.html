@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>流程图</title>
+</head>
+<body>
+
+<div id="mybox" style="width:1000px;height:800px;border:1px solid #ccc;margin:0 auto;"></div>
+
+<script src="js/raphael-min.js"></script>>
+<script>
+/*	function startMove(){
+		for(var i=0, len = this.length; i<len; i++){
+			this[i]._x = this[i].attr('x');
+			this[i]._y = this[i].attr('y');
+		}
+	};
+	function onMove(dx, dy){
+		for(var i=0, len = this.length; i<len; i++){
+				this[i].attr({x:this[i]._x+dx, y:this[i]._y+dy});
+		}
+	};
+	function endMove(){
+	};
+*/
+
+	//默认配置
+	
+	//线条配置项
+	var lineConfig = {
+		'arrow-end': 'block-midium-midium',
+		'stroke-width': 2
+	};
+	//图形配置项
+	var polygonConfig = {
+		'stroke-width': 0,
+		'fill': '#d5d5d5',
+	};
+	//文本配置项
+	var textConfig = {
+		'font-size':10
+	};
+
+	//自定义绘图函数封装
+	function myMethods(){
+		//创建集合
+		this.createSet = function(arr){
+			var s = this.set();
+			for(var i = 0, len = arr.length; i<len; i++)
+				s.push(arr[i]);
+			// s.drag(onMove, startMove, endMove, s, s, s);
+			return s;
+		};
+
+		//参数说明，x,y为左上角坐标，width，height长宽，content文本内容，c1，c2为图形配置和文本配置
+		this.drawRect = function(x, y, width, height, content, c1, c2){
+			c1 = c1 || polygonConfig;
+			c2 = c2 || textConfig;
+			var r = this.rect(x,y,width,height).attr(c1);
+			var t = this.text(x+width/2, y+height/2, content).attr(c2);
+			return this.createSet([r,t]);
+		};
+		this.drawCircularRect = function(x, y, width, height, radius, content, c1, c2){
+			c1 = c1 || polygonConfig;
+			c2 = c2 || textConfig;
+			var r = this.rect(x,y,width,height,radius).attr(c1);
+			var t = this.text(x+width/2, y+height/2, content).attr(c2);
+			return this.createSet([r,t]);
+		};
+
+		//说明：菱形包括六边形等非基本图形通过折线的方式绘制，参数同上，Xn，Yn为点坐标
+		this.drawDiamond = function(x1,y1,x2,y2,x3,y3,x4,y4,content, c1, c2){
+			c1 = c1 || polygonConfig;
+			c2 = c2 || textConfig;
+			var d = this.path('M'+x1+' '+y1+'L'+x2+' '+y2+'L'+x3+' '+y3+'L'+x4+' '+y4+'L'+x1+' '+y1).attr(c1);
+			var t = this.text(x1, y1+(y3-y1)/2, content).attr(c2);
+			return this.createSet([d,t]);
+		};
+		this.drawHexagon = function(x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6,content, c1, c2){
+			c1 = c1 || polygonConfig;
+			c2 = c2 || textConfig;
+			var h = this.path('M'+x1+' '+y1+'L'+x2+' '+y2+'L'+x3+' '+y3+'L'+x4+' '+y4+'L'+x5+' '+y5+'L'+x6+' '+y6+'L'+x1+' '+y1).attr(c1);
+			var t = this.text((x1+x2)/2, (y1+y5)/2, content).attr(c2);
+			return this.createSet([h,t]);
+		};
+
+		//str为path字符串
+		this.drawLine = function(str, content, config){
+			config = config || lineConfig;
+			var p = this.path(str).attr(config);
+			if(content){
+				var arr = str.replace(/[A-Za-z]+/g, '').split(' ');
+				var len = arr.length;
+				for(var i=0; i<len; i++)
+					arr[i] = parseFloat(arr[i]);
+				var xfix  = 0, yfix = 0;
+				(arr[len/2-2] - arr[len/2] == 0)?xfix=10:yfix=10;
+				this.text((arr[len/2-2]+arr[len/2])/2-xfix, (arr[len/2-1]+arr[len/2+1])/2-yfix, content);
+			};
+			return p;
+		};
+	};
+
+	//创建画布对象，id选择器选择dom节点
+	function createPaper(id, width, height){
+		var paper = Raphael(document.getElementById(id), width, height);
+		myMethods.apply(paper);
+		return paper;
+	};
+</script>
+<script>
+//线条配置项
+var mylineConfig = {
+
+};
+//图形配置项
+var mypolygonConfig = {
+
+};
+//文本配置项
+var mytextConfig = {
+
+};
+
+//创建画布
+var paper = createPaper('mybox', 1000, 800);
+
+//几何图形
+paper.drawRect(220,10, 100, 50, '气象台严密监\n视气象变化');
+paper.drawRect(620,10, 100, 50, '确定作业方案');
+paper.drawDiamond(470,10, 520,35, 470,60, 420,35, '有利增雨?');
+var a = paper.drawHexagon(40,10, 100,10, 120,35, 100,60, 40,60, 20,35, '需开展人工\n影响天气作业');
+paper.drawDiamond(670,160, 720,185, 670,210, 620,185, '方案通过?');
+paper.drawCircularRect(820,160, 100, 50, 20,'终止');
+paper.drawRect(400,160, 120, 50, '提前15天向航管\n部门提出空域申请');
+paper.drawRect(180,160, 120, 50, '提前7天通过媒体\n向全市公告作业计划');
+paper.drawRect(170,285, 140, 50, '作业前1天16时前向\n航管部门提出作业申请');
+paper.drawRect(390,285, 140, 50, '准备作业设备至少\n提前三小时到达作业点');
+paper.drawRect(610,275, 140, 70, '等待最佳作业时机\n提前一小时向航管部门\n提出作业申请');
+paper.drawDiamond(870,285, 920,310, 870,335, 820,310, '是否同意?');
+paper.drawRect(820,435, 100, 50, '做好发射准备');
+paper.drawRect(640,435, 100, 50, '作业前5分钟\n发射指令申请');
+paper.drawRect(460,435, 100, 50, '接到发射指令后\n进行发射作业');
+paper.drawDiamond(330,435, 380,460, 330,485, 280,460, '是否正常?');
+paper.drawRect(100,435, 100, 50, '进入故障处\n理应急预案');
+paper.drawRect(280,565, 100, 50, '发射完毕后\n向航管部门报告');
+paper.drawRect(460,565, 100, 50, '整理现场设备\n作业结束');
+paper.drawRect(640,565, 100, 50, '效益评估');
+paper.drawRect(820,565, 100, 50, '向省人影办\n报告作业情况');
+paper.drawCircularRect(825,665, 100, 50, 20,'结束');
+
+//事件
+a.click(function(){});
+a.hover(function(){}, function(){});
+
+//线条
+paper.drawLine('M120 35 L220 35');
+paper.drawLine('M320 35 L420 35');
+paper.drawLine('M520 35 L620 35', '是');
+paper.drawLine('M470 60 L470 110 L270 110 L270 60', '否');
+paper.drawLine('M670 60 L670 160');
+paper.drawLine('M720 185 L820 185', '否');
+paper.drawLine('M620 185 L520 185', '是');
+paper.drawLine('M400 185 L300 185');
+paper.drawLine('M240 210 L240 285');
+paper.drawLine('M310 310 L390 310');
+paper.drawLine('M530 310 L610 310');
+paper.drawLine('M750 310 L820 310');
+paper.drawLine('M870 285 L870 210', '否');
+paper.drawLine('M870 335 L870 435', '是');
+paper.drawLine('M820 460 L740 460');
+paper.drawLine('M640 460 L560 460');
+paper.drawLine('M460 460 L380 460');
+paper.drawLine('M280 460 L200 460', '否');
+paper.drawLine('M330 485 L330 565', '是');
+paper.drawLine('M380 590 L460 590');
+paper.drawLine('M560 590 L640 590');
+paper.drawLine('M740 590 L820 590');
+paper.drawLine('M870 615 L870 665');
+
+</script>
+</body>
+</html>
