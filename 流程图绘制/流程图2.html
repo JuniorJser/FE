@@ -8,7 +8,7 @@
 
 <div id="mybox" style="width:1000px;height:800px;border:1px solid #ccc;margin:0 auto;"></div>
 
-<script src="js/raphael-min.js"></script>>
+<script src="raphael-min.js"></script>>
 <script>
 /*	function startMove(){
 		for(var i=0, len = this.length; i<len; i++){
@@ -30,16 +30,19 @@
 	//线条配置项
 	var lineConfig = {
 		'arrow-end': 'block-midium-midium',
-		'stroke-width': 2
+		'stroke-linecap':'butt',
+		'stroke':'#78835b',
+		'stroke-width':3
 	};
 	//图形配置项
 	var polygonConfig = {
-		'stroke-width': 0,
-		'fill': '#d5d5d5',
+		'stroke-width': 1,
+		
+		'stroke':'#bed088'
 	};
 	//文本配置项
 	var textConfig = {
-		'font-size':10
+		'font-size':12
 	};
 
 	//自定义绘图函数封装
@@ -112,7 +115,10 @@
 <script>
 //线条配置项
 var mylineConfig = {
-
+	'stroke-width': 3,
+	'arrow-end': 'block-midium-midium',
+	'stroke-dasharray': '-',
+	'stroke':'#78835b'
 };
 //图形配置项
 var mypolygonConfig = {
@@ -157,23 +163,23 @@ a.hover(function(){}, function(){});
 //线条
 paper.drawLine('M120 35 L220 35');
 paper.drawLine('M320 35 L420 35');
-paper.drawLine('M520 35 L620 35', '是');
-paper.drawLine('M470 60 L470 110 L270 110 L270 60', '否');
+paper.drawLine('M520 35 L620 35', '是',mylineConfig);
+paper.drawLine('M470 60 L470 110 L270 110 L270 60', '否',mylineConfig);
 paper.drawLine('M670 60 L670 160');
-paper.drawLine('M720 185 L820 185', '否');
-paper.drawLine('M620 185 L520 185', '是');
+paper.drawLine('M720 185 L820 185', '否',mylineConfig);
+paper.drawLine('M620 185 L520 185', '是',mylineConfig);
 paper.drawLine('M400 185 L300 185');
 paper.drawLine('M240 210 L240 285');
 paper.drawLine('M310 310 L390 310');
 paper.drawLine('M530 310 L610 310');
 paper.drawLine('M750 310 L820 310');
-paper.drawLine('M870 285 L870 210', '否');
-paper.drawLine('M870 335 L870 435', '是');
+paper.drawLine('M870 285 L870 210', '否',mylineConfig);
+paper.drawLine('M870 335 L870 435', '是',mylineConfig);
 paper.drawLine('M820 460 L740 460');
 paper.drawLine('M640 460 L560 460');
 paper.drawLine('M460 460 L380 460');
-paper.drawLine('M280 460 L200 460', '否');
-paper.drawLine('M330 485 L330 565', '是');
+paper.drawLine('M280 460 L200 460', '否',mylineConfig);
+paper.drawLine('M330 485 L330 565', '是',mylineConfig);
 paper.drawLine('M380 590 L460 590');
 paper.drawLine('M560 590 L640 590');
 paper.drawLine('M740 590 L820 590');
