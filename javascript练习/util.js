@@ -287,3 +287,37 @@ function ajax(url, options){
 	//options:{type:post/get, data:, onsuccess:, onfail:}
 	
 };
+
+//继承
+function extend(child, parent){
+	var F = function(){};
+	F.prototype = parent.prototype;
+	child.prototype = new F();
+	child.prototype.constructor = child;
+	//备用，可以调用父级方法
+	child.uber = parent.prototype;
+};
+
+//bind使得this指向正确的引用
+if (!Function.prototype.bind) {
+  Function.prototype.bind = function (oThis) {
+    if (typeof this !== "function") {
+      throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
+    }
+
+    var aArgs = Array.prototype.slice.call(arguments, 1), 
+        fToBind = this, 
+        fNOP = function () {},
+        fBound = function () {
+          return fToBind.apply(this instanceof fNOP && oThis
+                                 ? this
+                                 : oThis || window,
+                               aArgs.concat(Array.prototype.slice.call(arguments)));
+        };
+
+    fNOP.prototype = this.prototype;
+    fBound.prototype = new fNOP();
+
+    return fBound;
+  };
+}

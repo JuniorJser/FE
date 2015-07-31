@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3</title>
+	<style type='text/css'>
+		.clear:after{
+			display: block;
+			content:'.';
+			overflow: hidden;
+			visibility: hidden;
+			height: 0;
+			clear: both;
+		}
+		.u-pointset{
+			cursor: default;
+			text-align: center;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 30px;
+		}
+		.u-pointset i{
+			width:10px;
+			height: 10px;
+			background: #d5d5d5;
+			border-radius: 50%;
+			display: inline-block;
+			cursor: pointer;
+			box-shadow: inset 0px 1px 0px #999;
+		}
+		.u-pointset i:hover{
+			background: #40a1d9;
+		}
+		.u-list{
+			width: 500px;
+			height: 100px;
+			overflow: hidden;
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		.u-list li{
+			float: left;
+			height: 100px;
+			width: 100px;
+			transition: width 0.5s ease-out;
+		}
+		.u-list li:hover{
+			width:200px;
+		}
+		.u-list:hover li:not(:hover){
+			width:75px;
+		}
+
+		.u-list li:nth-child(1){
+			background-color: blue;
+		}
+		.u-list li:nth-child(2){
+			background-color: green;
+		}
+		.u-list li:nth-child(3){
+			background-color: yellow;
+		}
+		.u-list li:nth-child(4){
+			background-color: red;
+		}
+		.u-list li:nth-child(5){
+			background-color: black;
+		}
+		img{
+			max-width: 400px;
+			transform:scale(1);
+			transition:all 0.5s;
+		}
+		img:hover{
+			transform:scale(1.2);
+		}
+	</style>
+</head>
+<body>
+	<span class="u-pointset">
+		<i></i>
+		<i></i>
+		<i></i>
+		<i></i>
+		<i></i>
+	</span>
+	<ul class="u-list">
+		<li><img src="icon-github.png" alt=""></li>
+		<li><img src="icon-github.png" alt=""></li>
+		<li><img src="icon-github.png" alt=""></li>
+		<li><img src="icon-github.png" alt=""></li>
+		<li><img src="icon-github.png" alt=""></li>
+	</ul>
+	<div style="background:black;width:30px;height:34px;overflow:hidden;margin:0 auto;">
+		<img src="icon-github.png" alt="">
+	</div>
+</body>
+</html>
