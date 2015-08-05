@@ -107,6 +107,6 @@ function delegateEvent(element, tag, eventName, listener){
 //简单示例
 var fn1 = function(){};
 var fn2 = function(){};
-//click为观察者，fn1,fn2为订阅者
+//addEvent为观察者，fn1,fn2为订阅者
 addEvent(element, 'click', fn1);
 addEvent(element, 'click', fn2);
