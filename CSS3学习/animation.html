@@ -4,10 +4,10 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style type='text/css'>
-	h1 {
+	.slidein {
 	  animation-duration: 3s;
 	  animation-name: slidein;
-	  animation-iteration-count: infinite;
+	  animation-iteration-count: 2;
 	  animation-direction: alternate;
 	}
 
@@ -30,6 +30,34 @@
 	</style>
 </head>
 <body>
-	<h1>123</h1>
+<h1 id='a'>123</h1>
+<div id="output"></div>
+<script>
+	function setup() {
+	  var e = document.getElementById("a");
+	  e.addEventListener("animationstart", listener, false);
+	  e.addEventListener("animationend", listener, false);
+	  e.addEventListener("animationiteration", listener, false);
+
+	  e.className = "slidein";
+	}
+
+	function listener(e) {
+	  var l = document.createElement("li");
+	  switch(e.type) {
+	    case "animationstart":
+	      l.innerHTML = "Started: elapsed time is " + e.elapsedTime;
+	      break;
+	    case "animationend":
+	      l.innerHTML = "Ended: elapsed time is " + e.elapsedTime;
+	      break;
+	    case "animationiteration":
+	      l.innerHTML = "New loop started at time " + e.elapsedTime;
+	      break;
+	  }
+	  document.getElementById("output").appendChild(l);
+	}
+	setup();
+</script>
 </body>
 </html>
