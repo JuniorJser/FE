@@ -1,0 +1,42 @@
+.cascadeBlock{
+	float: left;
+	overflow: hidden;
+	font-size: 14px;
+}
+.cascadePart{
+	float: left;
+	margin-left: 5px;
+	ul{
+		display: none;
+		position: absolute;
+		height: 150px;
+		width: 70px;
+		overflow-y: auto;
+		overflow-x: hidden; 
+		li{
+			width: 60px;
+			height: 25px;
+			text-indent: 1em;
+			line-height: 25px;
+			background-color: white;
+			cursor: pointer;
+			border-left: 2px solid #666;
+			box-shadow: 1px 1px 1px 1px #ccc;
+			&:hover{
+				background-color:#EE842F;
+				color:#fff;
+			}
+		}
+	}	
+	span{
+		cursor: pointer;
+		display: inline-block;
+		&:hover{
+			text-decoration:underline;
+		}
+	}
+	&:before{
+		content: '»';
+		padding: 0 3px;
+	}
+}
