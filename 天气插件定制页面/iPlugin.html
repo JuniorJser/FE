@@ -9,45 +9,27 @@
 </head>
 <body>
 <div class="container">
-	<div class='title'>
-		<span>插件选择</span>
-	</div>
 	<div class="pluginContainer">
-		<div class="pluginBox selected">
-			<a class='plugin clicked' href="javascript:;"><i class='arrow'></i><span>点击选择</span></a>
-			<a class='plugin' href="javascript:;"><i class='arrow'></i><span>点击选择</span></a>
-			<a class='plugin' href="javascript:;"><i class='arrow'></i><span>点击选择</span></a>
-			<a class='plugin' href="javascript:;"><i class='arrow'></i><span>点击选择</span></a>
+		<div class='title'>
+			<span>插件选择</span>
 		</div>
-		<div class="pluginBox">
-			<a class='plugin' href="javascript:;"><i class='arrow'></i><span>点击选择</span></a>
-			<a class='plugin' href="javascript:;"><i class='arrow'></i><span>点击选择</span></a>
-			<a class='plugin' href="javascript:;"><i class='arrow'></i><span>点击选择</span></a>
-			<a class='plugin' href="javascript:;"><i class='arrow'></i><span>点击选择</span></a>
-		</div>
+		
 		<div class="clickMore">
 			<span>点击更多</span>
 			<i class='arrow'></i>
 		</div>
 		<hr/>
 	</div>
-	<div class='title'>
-		<span>样式选择</span>
-	</div>
+
 	<div class="styleContainer">
+		<div class='title'>
+			<span>样式选择</span>
+		</div>
 		<div class="styleCheck">
-			<div>
-				<span>名称</span>
-				<input id='name' type="text" value="未命名">
-			</div>
-			<div>
+			<div id='skin'>
 				<span>皮肤</span>
-				<label><input type="radio" name='skin' checked="checked" value="skin1">皮肤1</label>
-				<label><input type="radio" name='skin' value="skin2">皮肤2</label>
-				<label><input type="radio" name='skin' value="skin3">皮肤3</label>
-				<label><input type="radio" name='skin' value="skin4">皮肤4</label>
 			</div>
-			<div>
+			<div id='city'>
 				<span>城市</span>
 				<select name="" id="city">
 					<option value="北京">北京</option>
@@ -57,9 +39,12 @@
 			</div>
 			<div class='size'>
 				<span>尺寸</span>
-				<input  id='width' type="text" value="200" maxlength="3">
-				<span>×</span>
-				<input id='height' type="text" value="100" maxlength="3">
+				<input  id='width' type="text"  >
+				<span class='unitPx'>像素</span>
+				<b>×</b>
+				<input id='height' type="text"  >
+				<span class='unitPx'>像素</span>
+				<p>使用默认尺寸</p>
 			</div>
 		</div>
 		<div class="codeBox">
