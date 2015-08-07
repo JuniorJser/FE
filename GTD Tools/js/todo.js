@@ -26,11 +26,10 @@ $('.g-l-foot').click(function(){
 	}
 });
 //删除分类
-$('.m-delete').click(function(e){
+$('.typelist').on('click', '.m-delete', function(e){
 	if(confirm("确认删除？")){
 		$(this).parent().parent().empty();
 	}
-	e.stopPropagation();
 });
 //任务的tab切换
 $('.g-m-head span').click(function(){
