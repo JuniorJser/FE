@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Flex</title>
+	<style>
+	body{
+		background: #f5f5f5;
+	}
+	.font_simulate{
+		font: 40px Microsoft YaHei;
+		color:#FAFAFA;
+		font-weight:bold;
+		text-shadow:1px 1px 1px #666;
+		text-align: center;
+	}
+	.main{
+		width: 300px;
+		height: 300px;
+		background: white;
+		float: left;
+		padding: 10px;
+		margin: 10px;
+		box-shadow: 1px 1px 1px 1px #ccc;
+		border-radius: 20px;
+
+		display: -webkit-flex;
+		display: flex;
+	}
+	.item{
+		width: 80px;
+		height: 80px;
+		background: #666;
+		border-radius: 50%;
+		margin: 10px;
+		box-shadow: inset 0px 2px 1px 1px black, inset 0px -2px 1px 1px #ccc;
+	}
+	.box1{
+		justify-content:center;
+	}
+	.box2{
+		justify-content:flex-end;
+	}
+	.box3{
+		align-items:center;
+	}
+	.box4{
+		align-items:center;
+		justify-content:center;
+	}
+	.box5{
+		align-items:center;
+		justify-content:flex-end;
+	}
+	.box6{
+		align-items:flex-end;
+	}
+	.box7{
+		align-items:flex-end;
+		justify-content:center;
+	}
+	.box8{
+		align-items:flex-end;
+		justify-content:flex-end;
+	}
+	.box9{
+		justify-content:space-between;
+	}
+	.box10{
+		justify-content:space-between;
+		flex-direction:column;
+	}
+	.box11{
+		justify-content:space-between;
+		flex-direction:column;
+		align-items:center;
+	}
+	.box12{
+		justify-content:space-between;
+		flex-direction:column;
+		align-items:flex-end;
+	}
+	.box13 .item:nth-child(2){
+		align-self:center;
+	}
+	.box14{
+		justify-content:space-between;
+	}
+	.box14 .item:nth-child(2){
+		align-self:flex-end;
+	}
+	.box15 .item:nth-child(2){
+		align-self:center;
+	}
+	.box15 .item:nth-child(3){
+		align-self:flex-end;
+	}
+	.box16{
+		flex-wrap:wrap;
+		justify-content:flex-end;
+		align-content:space-between;
+	}
+	.box17{
+		justify-content:space-between;
+	}
+	.box17 .column{
+		display: flex;
+		display: -webkit-flex;
+		flex-direction:column;
+		justify-content:space-between;
+	}
+	.box18{
+		flex-wrap:wrap;
+		align-content:space-between;
+	}
+	.box19{
+		flex-direction:column;
+		flex-wrap:wrap;
+		align-content:space-between;
+	}
+	.box20{
+		flex-wrap:wrap;
+	}
+	.box20 .row{
+		display: flex;
+		display: -webkit-flex;
+		flex-basis:100%;
+	}
+	.box20 .row:nth-child(2){
+		justify-content:center;
+	}
+	.box20 .row:nth-child(3){
+		justify-content:space-between;
+	}
+	.box21{
+		flex-wrap:wrap;
+	}
+	</style>
+</head>
+<body>
+<div style='margin:0 auto;overflow:hidden;width:1020px;'>
+	<p class='font_simulate'>Flex布局练习</p>
+	<div class="main">
+		<div class="item"></div>
+	</div>
+	<div class="main box1">
+		<div class="item"></div>
+	</div>
+	<div class="main box2">
+		<div class="item"></div>
+	</div>
+	<div class="main box3">
+		<div class="item"></div>
+	</div>
+	<div class="main box4">
+		<div class="item"></div>
+	</div>
+	<div class="main box5">
+		<div class="item"></div>
+	</div>
+	<div class="main box6">
+		<div class="item"></div>
+	</div>
+	<div class="main box7">
+		<div class="item"></div>
+	</div>
+	<div class="main box8">
+		<div class="item"></div>
+	</div>
+	<div class="main box9">
+		<div class="item"></div>
+		<div class="item"></div>
+	</div>
+	<div class="main box10">
+		<div class="item"></div>
+		<div class="item"></div>
+	</div>
+	<div class="main box11">
+		<div class="item"></div>
+		<div class="item"></div>
+	</div>
+	<div class="main box12">
+		<div class="item"></div>
+		<div class="item"></div>
+	</div>
+	<div class="main box13">
+		<div class="item"></div>
+		<div class="item"></div>
+	</div>
+	<div class="main box14">
+		<div class="item"></div>
+		<div class="item"></div>
+	</div>
+	<div class="main box15">
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+	</div>
+	<div class="main box16">
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+	</div>
+	<div class="main box17">
+		<div class="column">
+			<div class="item"></div>
+			<div class="item"></div>
+		</div>
+		<div class="column">
+			<div class="item"></div>
+			<div class="item"></div>
+		</div>
+	</div>
+	<div class="main box18">
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+	</div>
+	<div class="main box19">
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+	</div>
+	<div class="main box20">
+		<div class="row">
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+		</div>
+		<div class="row">
+			<div class="item"></div>
+		</div>
+		<div class="row">
+			<div class="item"></div>
+			<div class="item"></div>
+		</div>
+	</div>
+	<div class="main box21">
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+	</div>
+</div>
+</body>
+</html>
