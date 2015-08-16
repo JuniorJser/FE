@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.mod-spm{
+			height: 200px;
+			width: 200px;
+			border:1px solid #ccc;
+		}
+		#div1{
+			height: 100px;
+			width: 100px;
+			position: absolute;
+			top: 0;
+			right: 0;
+			background: black;
+		}
+	</style>
+</head>
+<body>
+<div id="div1"></div>
+<div class='mod-spm'data-spmid='123'>
+        <divclass='child_a'></div>
+        <divclass='child_b'></div>
+        <divclass='child_c'></div>
+        <divclass='child_d'></div>
+    </div>
+    <div class='mod-spm' data-spmid='456'>
+        <divclass='child_a'></div>
+        <divclass='child_b'></div>
+        <divclass='child_c'></div>
+        <divclass='child_d'></div>
+    </div>
+    <div class='mod-spm' data-spmid='789'>
+        <divclass='child_a'></div>
+        <divclass='child_b'></div>
+        <divclass='child_c'></div>
+        <divclass='child_d'></div>
+    </div>
+<script>
+function adddot(num) {
+	var temp = new Array();    
+	for (var i = 0;i < num.length;i++) {
+		temp.push(num[i]);
+	}
+	if (num.length < 4) {
+		return num;
+	}
+	for (var i = num.length - 3;i >= 0;i -= 3) {
+		if (i > 0) {
+			temp.splice(i,0,',');
+		}
+	}
+	return temp.join("");
+}
+console.log(adddot('9999999'));
+
+var str = "abc345efgabcab";
+var s1 = str.replace(/[abc]/g,'');
+var s2 = str.replace(/(\d)/g,'[$1]');
+var s3 = str.replace(/(\d)/g, function(arg1){return arg1*2;});
+console.log(s1+' '+s2+' '+s3);
+
+
+function ShowStayTime(obj) {
+	this.obj = obj;
+	this.totalTime = 0;
+	this.enterTime = null;
+	this.divTime= document.createElement('span');
+}
+ShowStayTime.prototype = {
+	constructor:ShowStayTime,
+	init: function() {
+		this.showStayTime();
+		this.obj.appendChild(this.divTime);
+		this.beginTime();
+		this.leaveTime();
+	},
+	showStayTime: function() {
+		var message = "";
+		message = "停留时间" + this.totalTime + "ms";
+		this.divTime.innerText = message;
+	},
+	beginTime: function() {
+		this.obj.addEventListener("mouseenter",function() {
+		this.enterTime = new Date();
+	})
+	},
+	leaveTime: function() {
+		var temp = this;
+		this.obj.addEventListener("mouseleave",function() {
+			temp.totalTime += new Date().getTime() - this.enterTime.getTime();
+			temp.showStayTime();
+		})
+	}
+}
+var divs = document.getElementsByClassName('mod-spm');
+var show1 = new ShowStayTime(divs[0]);
+var show2 = new ShowStayTime(divs[1]);
+var show3 = new ShowStayTime(divs[2]);
+show1.init();
+show2.init();
+show3.init();
+
+window.onload=function()
+{
+	var obj=document.getElementById('div1');
+	var curX=0;
+	var curY=0;
+	obj.onmousedown=function(ev)
+	{
+		var ev=ev||event;
+		curX=ev.clientX-obj.offsetLeft;
+		curY=ev.clientY-obj.offsetTop;//按下时鼠标坐标	
+
+		document.onmousemove=function(ev)//IE7用setCapture解决兼容
+		{
+			var ev=ev||event;
+			var l=ev.clientX-curX;
+			var t=ev.clientY-curY;
+			obj.style.left=l+'px';
+			obj.style.top=t+'px';
+		};
+		document.onmouseup=function()
+		{
+			document.onmousemove=null;
+			document.onmouseup=null;	
+		};
+		
+		return false;
+	};
+};
+</script>
+</body>
+</html>
