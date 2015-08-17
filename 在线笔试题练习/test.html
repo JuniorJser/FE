@@ -132,6 +132,29 @@ window.onload=function()
 		return false;
 	};
 };
+
+function A(params){
+	params = params || {};
+	for (var keys in params){
+		Object.defineProperty(this, keys, {
+			get:(function(){
+				var key = keys;
+				return function(){
+					return params[key];
+				}
+			})(keys),
+			enumerable:false
+		});
+	}
+}
+
+var a = new A({
+	'X':'X',
+	'Y':'Y',
+	'Z':'Z'
+});
+
+console.log(a.X);
 </script>
 </body>
 </html>
