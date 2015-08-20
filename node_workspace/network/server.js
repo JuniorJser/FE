@@ -49,3 +49,26 @@ http.get('http://www.example.com/', function(response) {
 		console.log(body.toString());
 	});
 });
+
+//https server
+
+//key和cert字段指定了HTTPS服务器使用的私钥和公钥
+var options = {
+	key:fs.readFileSync('./ssl/default.key'),
+	cert:fs.readFileSync('./ssl/default.cer'),
+	//该字段用于禁用对证书有效性的检查
+	//从而允许https模块请求开发环境下使用自制证书的HTTPS服务器
+	rejectUnauthorized:false
+};
+
+var server = https.createServer(options, function(request, response)) {
+	//.....
+});
+
+//向https服务器添加证书
+server.addContext('foo.com',{
+	key: fs.readFileSync('./ssl/foo.com.key'),
+	cert: fs.readFileSync('./ssl/foo.com.cer')
+});
+
+//url,记得去看parse和querystring的源码
