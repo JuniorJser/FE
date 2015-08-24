@@ -1,0 +1,50 @@
+.container{
+	width: 500px;
+	margin: 0 auto;
+	font-size: 12px;
+	overflow: hidden;
+	background: #f1f1f1;
+	border-radius: 5px;
+	box-shadow: 0 0 1px 1px #ccc;
+}
+
+ul.marquee {
+	display: block;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	line-height: 1;
+	position: relative;
+	overflow: hidden;
+	height: 22px;
+
+}
+
+.marquee-showing{
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	white-space: nowrap;
+	font: 12px Arial, Helvetica, sans-serif;
+	line-height: 22px;
+	padding:0 5px;
+}
+ul.marquee span{
+	color: #3087e8
+}
+.marquee-author {
+	float:left;
+	display:inline;
+	text-align:left;
+	color:#3087E8;
+	line-height:24px;
+	height:24px;
+	font-weight:bold;
+	padding:0 5px 0 20px;
+	background:url(../img/bg.png) center left no-repeat;
+}
+.marqbox {
+	overflow:hidden;
+	width: 100%;
+}
