@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 调用摄像头，不兼容safari -->
+<video id="video" autoplay=""style='width:640px;height:480px'></video>
+<div><button id='picture' style="width: 100%;">PICTURE</button></div>
+<canvas id="canvas" width="640" height="480"></canvas>
+<!-- 手机调用相机 -->
+<input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput" class="sign_file"/>
+<script type="text/javascript">
+var video = document.getElementById("video");
+var context = canvas.getContext("2d");
+var err = function () {
+    console.log('sth wrong!');
+}
+
+if (navigator.getUserMedia) { // 标准的API
+    navigator.getUserMedia({ "video": true }, function (stream) {
+        video.src = stream;
+        video.play();
+    }, err);
+} else if (navigator.webkitGetUserMedia) { // WebKit的API
+    navigator.webkitGetUserMedia({ "video": true }, function (stream) {
+        video.src = window.URL.createObjectURL(stream);
+        video.play();
+    }, err);
+}
+
+document.getElementById("picture").addEventListener("click", function () {
+    context.drawImage(video, 0, 0, 640, 480);
+});
+</script>
+
+</body>
+</html>
