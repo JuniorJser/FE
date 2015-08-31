@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>rotate</title>
+	<style type='text/css'>
+		#test{
+			height: 100px;
+			width: 100px;
+			margin: 10px;
+			background: #666;
+			animation: rotate 10s infinite linear;
+		}
+		@keyframes rotate{
+			from{
+				transform: rotate(0deg); 
+			}
+			to{
+				transform: rotate(360deg);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div id="test"></div>
+	<script>
+			var div = document.getElementById("test");
+			var startTime, clickTime;
+			div.addEventListener("animationstart", function (e) {
+		    	startTime = new Date().getTime();
+			}, false);
+			div.addEventListener("click", function(e){
+				clickTime = new Date().getTime();
+				console.log((clickTime - startTime)/1000%10/10*360);
+			}, false);
+	</script>
+</body>
+</html>
