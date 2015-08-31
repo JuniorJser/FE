@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>加速计监测方位变化事件</title>
+</head>
+<body>
+<script>
+	if (window.DeviceOrientationEvent) {
+	    window.addEventListener('deviceorientation', function(event) {
+	        var a = event.alpha,
+	            b = event.beta,
+	            g = event.gamma;
+	        alert('Orientation - Alpha: ' + a + ', Beta: '+ b + ', Gamma: ' + g);
+	    }, false);
+	} else {
+	    alert('This device does not support deviceorientation');
+	}
+</script>
+</body>
+</html>
