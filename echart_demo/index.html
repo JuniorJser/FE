@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <select name="select" id="city">
+    	<option value="330200">宁波市</option>
+    	<option value="330300">温州市</option>
+    	<option value="330500">湖州市</option>
+    	<option value="330600">绍兴市</option>
+    </select>
+    <div id="main2" style="height:400px;"></div>
+
+    <div id="main" style="height:400px;"></div>
+    <!-- ECharts单文件引入 -->
+    <script src="jquery.js"></script>
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/line',
+                'echarts/chart/bar',
+                'echarts/chart/map' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main')); 
+                var myChart2 = ec.init(document.getElementById('main2')); 
+                
+                var option = {
+				    title : {
+				        text: '未来一周气温变化',
+				        subtext: '纯属虚构'
+				    },
+				    tooltip : {
+				        trigger: 'axis'
+				    },
+				    legend: {
+				        data:['最高气温','最低气温']
+				    },
+				    toolbox: {
+				        show : true,
+				        feature : {
+				            dataView : {readOnly:false},
+				            magicType : {show: true, type: ['line', 'bar']},
+				            restore : {show: true}
+				        }
+				    },
+				    calculable : true,
+				    xAxis : [
+				        {
+				            type : 'category',
+				            boundaryGap : false,
+				            data : ['周一','周二','周三','周四','周五','周六','周日']
+				        }
+				    ],
+				    yAxis : [
+				        {
+				            type : 'value',
+				            axisLabel : {
+				                formatter: '{value} °C'
+				            }
+				        }
+				    ],
+				    series : [
+				        {
+				            name:'最高气温',
+				            type:'line',
+				            data:[11, 11, 15, 13, 12, 13, 10],
+				            markPoint : {
+				                data : [
+				                    {type : 'max', name: '最大值'},
+				                    {type : 'min', name: '最小值'}
+				                ]
+				            },
+				            markLine : {
+				                data : [
+				                    {type : 'average', name: '平均值'}
+				                ]
+				            }
+				        },
+				        {
+				            name:'最低气温',
+				            type:'bar',
+				            data:[1, -2, 2, 5, 3, 2, 0],
+				            markPoint : {
+				                data : [
+				                    {name : '周最低', value : -2, xAxis: 1, yAxis: -1.5}
+				                ]
+				            },
+				            markLine : {
+				                data : [
+				                    {type : 'average', name : '平均值'}
+				                ]
+				            }
+				        }
+				    ]
+				};
+        
+        		var option2 = {
+				    title: {
+				        text : '浙江省精细图',
+				        subtext : '市级'
+				    },
+				    tooltip : {
+				        trigger: 'item',
+				        formatter:"{b}"
+				       
+				    },
+				    series : [
+				        {
+				            name: '浙江省',
+				            type: 'map',
+				            mapType: '浙江',
+				            selectedMode : 'single',
+				            itemStyle:{
+				                normal:{label:{show:true}},
+				                emphasis:{label:{show:true}}
+				            },
+				            data:[]
+				        }
+				    ]
+				};
+                // 为echarts对象加载数据 
+                myChart.setOption(option); 
+
+               var cityMap = {
+				   
+				    "杭州市": "330100",
+				    "宁波市": "330200",
+				    "温州市": "330300",
+				    "嘉兴市": "330400",
+				    "湖州市": "330500",
+				    "绍兴市": "330600",
+				    "金华市": "330700",
+				    "衢州市": "330800",
+				    "舟山市": "330900",
+				    "台州市": "331000",
+				    "丽水市": "331100"
+				};
+
+
+				var curIndx = 0;
+				var mapType = [];
+				var mapGeoData = require('echarts/util/mapData/params');
+				for (var city in cityMap) {
+				    mapType.push(city);
+				    // 自定义扩展图表类型
+				    mapGeoData.params[city] = {
+				        getGeoJson: (function (c) {
+				            var geoJsonName = cityMap[c];
+				            return function (callback) {
+
+				                $.getJSON('data/' + geoJsonName + '.json', callback);
+				            }
+				        })(city)
+				    }
+				}
+
+				var ecConfig = require('echarts/config');
+				var zrEvent = require('zrender/tool/event');
+				document.getElementById('main2').onmousewheel = function (e){
+				    /*var event = e || window.event;
+				    curIndx += zrEvent.getDelta(event) > 0 ? (-1) : 1;
+				    if (curIndx < 0) {
+				        curIndx = mapType.length - 1;
+				    }
+				    var mt = mapType[curIndx % mapType.length];*/
+				    option2.series[0].mapType = "浙江";
+				    option2.title.subtext = "市级" ;
+
+				    myChart2.setOption(option2, true);
+				    zrEvent.stop(event);
+				};
+				myChart2.on(ecConfig.EVENT.MAP_SELECTED, function (param){
+					option2.series[0].mapType = param.target;
+					if(param.target in cityMap){
+						option2.title.subtext = "区级" ;
+						$("#city").find("option").removeAttr("selected");
+						$("#city").find("option[value = "+cityMap[param.target]+"]").attr("selected","selected");
+						option.series[1].data = [1,2,3,4,5,6];
+				    	myChart.setOption(option, true);
+					} else {
+						return;
+					}
+				    myChart2.setOption(option2, true);
+				});
+				myChart2.setOption(option2, true);
+
+				$("#city").on("change",function(){
+					var city = $(this).find("option:selected").text();
+					option2.series[0].mapType = city; 
+					option.series[1].data = [1,2,3,4,5,6];
+					myChart2.setOption(option2, true);
+					myChart.setOption(option, true);
+				});
+            }
+
+        );
+    </script>
+</body>
