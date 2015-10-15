@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>textarea</title>
+</head>
+<body>
+	<textarea name="" id="textadapt" style="width:200px;line-height:10px;font-size:10px;">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</textarea>
+	<script type="text/javascript">
+	
+	var t = document.getElementById("textadapt"),
+	len = t.value.length,
+	width = t.clientWidth,
+	style = (window.getComputedStyle||function(a){return a.currentStyle})(t, null),
+	fs = parseInt(style['font-size']) || 12,
+	lh = parseInt(style['line-height']) || fs * 1.2;
+	t.style.height = Math.ceil(len / (width / fs)) * lh + "px";
+
+	</script>
+</body>
+</html>
