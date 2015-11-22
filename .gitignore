@@ -1,4 +1,4 @@
-# Windows image file caches
+﻿# Windows image file caches
 Thumbs.db
 ehthumbs.db
 
@@ -42,3 +42,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 在线笔试题练习/sample.html
+
+node_modules/
